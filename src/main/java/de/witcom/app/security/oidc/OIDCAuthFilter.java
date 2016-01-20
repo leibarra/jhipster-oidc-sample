@@ -269,6 +269,7 @@ public class OIDCAuthFilter extends AbstractAuthenticationProcessingFilter {
 
 		// look up the issuer that we set out to talk to
 		String issuer = getStoredSessionString(session, ISSUER_SESSION_VARIABLE);
+		//String issuer = "https://190.184.205.151:9443/oauth2endpoints/token";
 		logger.debug("Issuer " + issuer);
 		if (Strings.isNullOrEmpty(issuer)){
 			return null;
@@ -555,7 +556,7 @@ public class OIDCAuthFilter extends AbstractAuthenticationProcessingFilter {
 				}
 
 				String storedNonce = getStoredNonce(session);
-				if (!nonce.equals(storedNonce)) {
+				if (!Strings.isNullOrEmpty(nonce) && !nonce.equals(storedNonce)) {
 					logger.error("Possible replay attack detected! The comparison of the nonce in the returned "
 							+ "ID Token to the session " + NONCE_SESSION_VARIABLE + " failed. Expected " + storedNonce + " got " + nonce + ".");
 /*

@@ -3,14 +3,14 @@ server:
 
 #openidconnect authentication
 openidconnect:
-    issuer-uri: https://URI:9443/oauth2endpoints/token
-    issuer: https://URI.de:9443/oauth2endpoints/token
-    authorizationEndpointUri: https://URI:9443/oauth2/authorize
-    tokenEndpointUri: https://URI:9443/oauth2/token
-    userInfoUri: https://URI:9443/oauth2/userinfo?schema=openid
-    clientId: id
-    clientSecret: secret
-    redirectUri: http://localhost:8080/auth/openid_connect_login
+    issuer-uri: https://auth.ekogui.gov.co:9443/oauth2endpoints/token
+    issuer: https://auth.ekogui.gov.co:9443/oauth2endpoints/token
+    authorizationEndpointUri: https://auth.ekogui.gov.co:9443/oauth2/authorize
+    tokenEndpointUri: https://auth.ekogui.gov.co:9443/oauth2/token
+    userInfoUri: https://auth.ekogui.gov.co:9443/oauth2/userinfo?schema=openid
+    clientId: fq4obd6a9N9upapYqrpsrKIzEiga
+    clientSecret: zaHMfRAafBQSKZJpADqnqASek4oa
+    redirectUri: http://192.168.40.145:8080/auth/openid_connect_login
 
 
 spring:

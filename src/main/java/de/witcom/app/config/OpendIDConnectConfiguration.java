@@ -97,6 +97,7 @@ public class OpendIDConnectConfiguration implements EnvironmentAware{
     	
     	ServerConfiguration serverCfg = new ServerConfiguration();
     	serverCfg.setIssuer(propertyResolver.getProperty(PROP_ISSUER));
+    	//serverCfg.setIssuer("https://190.184.205.151:9443/oauth2endpoints/token");
     	serverCfg.setTokenEndpointUri(propertyResolver.getProperty(PROP_TOKENEPURI));
     	serverCfg.setAuthorizationEndpointUri(propertyResolver.getProperty(PROP_AUTHEPURI));
     	serverCfg.setUserInfoUri(propertyResolver.getProperty(PROP_USEREPURI));

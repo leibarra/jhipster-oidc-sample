@@ -136,6 +136,7 @@ public class UserService {
 
     @Transactional(readOnly = true)
     public User getUserWithAuthorities() {
+    	 log.debug("Login actual: {}", SecurityUtils.getCurrentLogin());
         User currentUser = userRepository.findOneByLogin(SecurityUtils.getCurrentLogin());
         currentUser.getAuthorities().size(); // eagerly load the association
         return currentUser;

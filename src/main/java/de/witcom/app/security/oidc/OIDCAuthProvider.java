@@ -84,6 +84,7 @@ public class OIDCAuthProvider implements AuthenticationProvider {
 
 			Collection<SubjectIssuerGrantedAuthority> authorities = Lists.newArrayList(new SubjectIssuerGrantedAuthority(token.getSub(), token.getIssuer()));
 			
+			// Se intenta obtener la información del usuario desde el IDP
 			UserInfo userInfo = userInfoFetcher.loadUserInfo(token);
 
 			
@@ -98,12 +99,15 @@ public class OIDCAuthProvider implements AuthenticationProvider {
 				logger.debug("User aus Datenbank holen, bzw. anlegen");
 				userInfo.setSub(token.getSub());
 				try {
+					// se intenta cargar la información detallada del usuario desde la base de datos.
 					logger.debug("Try to load User from database");
 					userDetails = loadUserByOIDCId(token.getSub(), provider);
 					logger.debug("Loaded {} from database",userDetails.getUsername());
 				} catch (UsernameNotFoundException ex){
 					logger.debug("User {} not found, creating new one");
 					try {
+						// Si no existe información detallada del usuario en la base de datos 
+						// se crea el usuario.
 						this.registerExternalAccount(userInfo);
 						userDetails = loadUserByOIDCId(token.getSub(), provider);
 						
@@ -197,6 +201,8 @@ public class OIDCAuthProvider implements AuthenticationProvider {
         String firstName = userInfo.getGivenName();
         String lastName = userInfo.getFamilyName();
         String email = userInfo.getEmail();
+        
+        
         
         // build the ExternalAccount from the ConnectionKey
         

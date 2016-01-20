@@ -73,7 +73,8 @@ public class OIDCAuthToken extends AbstractAuthenticationToken {
 
 		super(new ArrayList<GrantedAuthority>(0));
 		
-		String preferredUsername = subject;
+		//String preferredUsername = subject;
+		String preferredUsername = subject.split("@")[0];
 		
 		this.principal = ImmutableMap.of("sub", subject, "iss", issuer,"preferredUsername",preferredUsername);
 
